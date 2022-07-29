@@ -31,14 +31,10 @@ var choiceEl = document.getElementById('choices');
 var quizStatus = document.getElementById('status');
 var viewHighscores = document.getElementById ('viewScore');
 var timerLabel = document.getElementById('timerLabel');
-var wins = document.getElementById('correctQuesions');
-var losses = document.getElementById('incorrectQuesions');
+var wins = document.getElementById('correctQuestions');
+var losses = document.getElementById('incorrectQuestions');
 
 
-// 
-
-// declare var for this to use in forloop to check for correct answer
-// var rightAnswer 
 
 // sets time to take the quiz
 var secondsLeft = 51;
@@ -46,11 +42,12 @@ var secondsLeft = 51;
 // sets the question index
 var questionIndex = 0;
 
-// sets the wins and losses to start
-
+// sets the wins and losses to start and console logs the result each time it runs
 
 var winsStart = 0
 var lossesStart = 0
+
+
 
 function countWins(){
 winsStart++;
@@ -61,6 +58,7 @@ function countlosses(){
  lossesStart++; 
  console.log(lossesStart)
 }
+
 
 
 // function to control the timer with the quiz
@@ -83,8 +81,7 @@ function setTime() {
       // Stops execution of action at set interval
       clearInterval(timerInterval);
   
-      sendMessage();
-    }
+         }
 
   }, 1000);
 
@@ -166,11 +163,16 @@ function choiceClick() {
   // looks to see if there are more questions to see if the question index matches the question array length
 
   if (questionIndex === questionArr.length) {
-    //need to add code to call a fucntion to end the quiz
-    console.log('end quiz')
+
+    console.log('end quiz');
+    console.log(winsStart);
+    wins.textContent = winsStart;
+    localStorage.setItem("wins",winsStart);
+    console.log(lossesStart);
+    losses.textContent = lossesStart;
+    localStorage.setItem("losses",lossesStart)
     timeEl.setAttribute ('class','hide');
     timerLabel.textContent ='Game Over';
-    // quizStatus.textContent = 'Click view highscores to save your score';
     quizScreen.setAttribute('class','hide');
     return
 
@@ -186,6 +188,9 @@ function choiceClick() {
 
 startBtn.addEventListener("click", setTime)
 
-//TO DO : stop the time when the game is over and display users score and put that in local storage
+
+//TO DO : store final value of wins and losses in variable after game is played and store that to local storage and then access it to display in the view highlights section
+
+
 
 // All done! Your final score is, enter intials submit, display high scores
