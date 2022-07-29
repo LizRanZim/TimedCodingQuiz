@@ -134,7 +134,7 @@ function choiceClick() {
     console.log('right')
     quizStatus.textContent = 'You are right.';
     // winsStart++;
-    // wins.textContent = winsStart;
+    // wins.value = winsStart;
    
   }
 
