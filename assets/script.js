@@ -32,7 +32,10 @@ var quizStatus = document.getElementById('status');
 var viewHighscores = document.getElementById ('viewScore');
 var timerLabel = document.getElementById('timerLabel');
 var wins = document.getElementById('correctQuesions');
-var losses = document.getElementById('incorrectQuesions')
+var losses = document.getElementById('incorrectQuesions');
+
+// declare var for this to use in forloop to check for correct answer
+var rightAnswer = 
 
 
 // sets time to take the quiz
@@ -133,6 +136,7 @@ function choiceClick() {
   else {
     console.log('right')
     quizStatus.textContent = 'You are right.';
+    console.log (winsStart.value);
     // winsStart++;
     // wins.value = winsStart;
    
@@ -162,7 +166,16 @@ function choiceClick() {
 
 }
 
+function sendMessage {
+  timerLabel.textContent ='Game Over';
+}
 
+// add for loop to loop through questions and ensure you are looping over your choices in order to be able to then check if choice selected is the correct answer. In this way, as you are looping over your choices and checking for the correct/incorrect answer, your counters may work.
+for (let index = 0; questionIndex < questionArr.length; index++) {
+  ;
+  
+  
+}
 
 startBtn.addEventListener("click", setTime)
 
