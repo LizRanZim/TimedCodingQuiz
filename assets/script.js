@@ -1,9 +1,3 @@
-// Psuedo code
-// Define 3 boxes to hold start button, hold timer, hold quiz
-// function that I want to happen when start button is clicked
-// if else for each question that describes what happens when question is right, else what happens if question is wrong
-// need to write the questions
-
 
 // Question array to hold questions and answers
 var questionArr = [
@@ -16,15 +10,28 @@ var questionArr = [
     question: "what color is the apple?",
     choices: ['black', 'purple', 'green', 'blue'],
     correctAnswer: 'green'
-  }
+  },
+  {
+    question: "what color is the sky?",
+    choices: ['yellow', 'purple', 'pink', 'sky blue'],
+    correctAnswer: 'sky blue'
+  },
+  {
+    question: "what color is the ground?",
+    choices: ['brown', 'purple', 'green', 'blue'],
+    correctAnswer: 'brown'
+  },
 ]
 
 // Selects element by id
 var timeEl = document.getElementById("time");
 var startBtn = document.getElementById("startBtn");
-var quizScreen = document.getElementById("quizScreen")
-var choiceEl = document.getElementById('choices')
-var quizStatus = document.getElementById('status')
+var quizScreen = document.getElementById("quizScreen");
+var choiceEl = document.getElementById('choices');
+var quizStatus = document.getElementById('status');
+var viewHighscores = document.getElementById ('viewScore');
+var timerLabel = document.getElementById('timerLabel');
+
 
 // sets time to take the quiz
 var secondsLeft = 51;
@@ -46,24 +53,30 @@ function setTime() {
 
   var timerInterval = setInterval(function () {
     secondsLeft--;
-    timeEl.textContent = secondsLeft + " seconds left till colorsplosion.";
+    timeEl.textContent = secondsLeft;
 
     if (secondsLeft === 0) {
       // Stops execution of action at set interval
       clearInterval(timerInterval);
-      //  Calls function to create and append image
+  
       sendMessage();
     }
 
   }, 1000);
 
-  getQuestions();
+//if question index is less than array length run get Questions
+
+  if (questionIndex < questionArr.length) { 
+    getQuestions();
+  }
 
 }
 
 // gets questions for quiz
 function getQuestions() {
 
+  if (questionIndex <= questionArr.length) { 
+   
   // assigns the current question from the questions array
   var currentQuest = questionArr[questionIndex]
   //console.log(currentQuest.question)
@@ -89,9 +102,12 @@ function getQuestions() {
 
     // appends choice button to choice element
     choiceEl.appendChild(choiceBtn)
-
+ 
 
   })
+
+} 
+
 }
 
 
@@ -104,7 +120,7 @@ function choiceClick() {
     console.log('wrong');
     secondsLeft -= 5;
     timeEl.textContent = secondsLeft;
-    quizStatus.textContent = 'Try Again';
+    quizStatus.textContent = 'You are wrong.';
   }
 
   //  if answer is right, tell them they are right
@@ -122,10 +138,18 @@ function choiceClick() {
   if (questionIndex === questionArr.length) {
     //need to add code to call a fucntion to end the quiz
     console.log('end quiz')
+    timeEl.setAttribute ('class','hide');
+    timerLabel.textContent ='Game Over';
+    // quizStatus.textContent = 'Click view highscores to save your score';
+    quizScreen.setAttribute('class','hide');
+    return
+
   } else {
     // code that calls the get Questions function if there are more questions
     getQuestions();
   }
+
+
 
 }
 
@@ -133,4 +157,6 @@ function choiceClick() {
 
 startBtn.addEventListener("click", setTime)
 
-//TO DO : create a function to end the quiz and display users score and put that in local storage
+//TO DO : stop the time when the game is over and display users score and put that in local storage
+
+// All done! Your final score is, enter intials submit, display high scores
