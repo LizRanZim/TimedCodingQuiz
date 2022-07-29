@@ -31,6 +31,8 @@ var choiceEl = document.getElementById('choices');
 var quizStatus = document.getElementById('status');
 var viewHighscores = document.getElementById ('viewScore');
 var timerLabel = document.getElementById('timerLabel');
+var wins = document.getElementById('correctQuesions');
+var losses = document.getElementById('incorrectQuesions')
 
 
 // sets time to take the quiz
@@ -39,6 +41,9 @@ var secondsLeft = 51;
 // sets the question index
 var questionIndex = 0;
 
+// sets the wins and losses to start
+var winsStart = 0
+var lossesStart = 0
 
 // function to control the timer with the quiz
 function setTime() {
@@ -121,12 +126,16 @@ function choiceClick() {
     secondsLeft -= 5;
     timeEl.textContent = secondsLeft;
     quizStatus.textContent = 'You are wrong.';
+    
   }
 
   //  if answer is right, tell them they are right
   else {
     console.log('right')
     quizStatus.textContent = 'You are right.';
+    // winsStart++;
+    // wins.textContent = winsStart;
+   
   }
 
   // moves onto the next question in the question array by adding to the question index
