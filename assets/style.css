@@ -1,8 +1,11 @@
+/* sets fonts for document */
+
 * {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 
 }
 
+/* sets padding for body */
 body {
     padding: 20px;
 

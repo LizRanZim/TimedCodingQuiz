@@ -233,20 +233,26 @@ startBtn.addEventListener("click", setTime);
 
 
 
-// Path 1 for logging initials (NOT WORKING)
+// Path 1 for logging initials (working)
 
 function localInitialsalt(event) {
+  event.preventDefault();
   var initialsBtn = document.getElementById('initialsBtn');
   var initials = ''
   var initialsInput = document.getElementById('initials-text');
-  event.preventDefault();
-  initials.textContent = initialsInput;
-  console.log(initialsInput);
-  localStorage.setItem("initials", initials);
+ 
+  initials=initialsInput.value;
+  console.log(initials);
+
+  localStorage.setItem("initials", JSON.stringify(initials));
+
+  
+
 
   return
 }
 
+initialsBtn.addEventListener("click", localInitialsalt);
 
 // Function to log initials, I don't know this syntax but copied it from here and tried to adjust it: https://stackoverflow.com/questions/69962673/how-do-i-save-and-show-text-input-to-local-storage-using-a-button
 
@@ -277,7 +283,7 @@ function localInitialsalt(event) {
 
 
 
-initialsBtn.addEventListener("submit", localInitialsalt);
+
 
 //TO DO : store final value of wins and losses in variable after game is played and store that to local storage and then access it to display in the view highlights in the div id status section (could not get initials to store so couldn't complete div id status and what I planned to do there.
 
