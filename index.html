@@ -7,30 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./assets/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
 
 <body>
     <div>
-        <h2>Quiz Game</h2>
+        <h1>Quiz Game</h1>
 
         <div id="startScreen">
-            <button id="startBtn">Start</button>
+            <button id="startBtn" class="btn btn-primary btn-lg">Start</button>
         </div>
 
-        <div id="timerLabel">Time: <span id="time">0</span>
+       <h2><div id="timerLabel">Time: <span id="time">0</h2></span>
         </div>
 
         <div id="viewScore">
-            <h2 id="finalScore">View Highscores</h2>
+            
 
-            <div id="scoreResults">
+            <div id="scoreResults" class="hide">
                 <h2>Your Score</h2>
-                <h3>Correct Answers <span id="correctQuestions">0</span></h3>
-                <h3> Incorrect Answers <span id="incorrectQuestions">0</span></h3>
-                <p>Enter your initials to save your score and press enter.</p>
+                <h4>Correct Answers: <span id="correctQuestions">0</span></h4>
+                <h4> Incorrect Answers: <span id="incorrectQuestions">0</span></h4>
+                <p>Enter your initials to save your score and press submit. The game will restart!</p>
                 <form id="initials-form">
                     <label for="initials-form">Add Your Intials </label>
-                    <input type="text" placeholder="AA" name="initials-text" id="initials-text" /><button id="initialsBtn">Submit</button>
+                    <input type="text" placeholder="AA" name="initials-text" id="initials-text" /><button id="initialsBtn" class ="btn btn-primary">Submit</button>
                   </form>
 
      
@@ -50,7 +51,9 @@
         
     </div>
 
-    <div id="status"></div>
+    <div id="status">
+        <div id="localStoragescores"></div>
+    </div>
 
     <script src="./assets/script.js"></script>
 </body>

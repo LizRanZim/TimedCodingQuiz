@@ -1,12 +1,53 @@
-*{
-font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    
+* {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
 }
 
-.hide{
+body {
+    padding: 20px;
+
+}
+
+h2 {
+    font-weight: bold;
+}
+/* controls which divs are showing for the quiz */
+
+.hide {
     display: none;
 }
 
-.show{
+.show {
     display: block;
+}
+
+/* styles button for initials */
+#initialsBtn {
+    margin: 10px;
+}
+
+/* styles answers for questions, this class is generated in JavaScript*/
+.choice {
+
+    margin: 15px;
+    background-color: bisque;
+    border-radius: 5px;
+}
+
+/* styles quizScreen */
+#quizScreen {
+    text-align: center;
+    background-color: lightblue;
+    border-radius: 5px;
+    font-size: 27px;
+}
+
+/* styles score results */
+#scoreResults {
+    text-align: center;
+    font-weight: bolder;
+    color: rgba(74, 14, 14, 0.504);
+    background-color: bisque;
+    font-size: 20px;
+
 }

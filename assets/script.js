@@ -30,6 +30,7 @@ var quizScreen = document.getElementById("quizScreen");
 var choiceEl = document.getElementById('choices');
 var quizStatus = document.getElementById('status');
 var viewHighscores = document.getElementById('viewScore');
+var showScores = document.getElementById('scoreResults')
 var timerLabel = document.getElementById('timerLabel');
 var wins = document.getElementById('correctQuestions');
 var losses = document.getElementById('incorrectQuestions');
@@ -75,6 +76,7 @@ function setTime() {
   quizScreen.removeAttribute('class')
 
   viewHighscores.setAttribute('class', 'hide')
+  showScores.setAttribute('class', 'hide')
 
   var timerInterval = setInterval(function () {
     secondsLeft--;
@@ -83,6 +85,22 @@ function setTime() {
     if (secondsLeft === 0) {
       // Stops execution of action at set interval
       clearInterval(timerInterval);
+
+      // runs all code to end the game and show the results of the game, details for each line of code commented below
+      console.log('end quiz');
+      console.log(winsStart);
+      wins.textContent = winsStart;
+      localStorage.setItem("wins", winsStart);
+      console.log(lossesStart);
+      losses.textContent = lossesStart;
+      localStorage.setItem("losses", lossesStart)
+      timeEl.setAttribute('class', 'hide');
+      timerLabel.textContent = 'Game Over';
+      quizScreen.setAttribute('class', 'hide');
+      quizStatus.setAttribute('class', 'hide');
+      viewHighscores.setAttribute('class', 'show');
+      showScores.setAttribute('class', 'show');
+
 
     }
 
@@ -147,14 +165,14 @@ function choiceClick() {
     console.log('wrong');
     secondsLeft -= 5;
     timeEl.textContent = secondsLeft;
-    quizStatus.textContent = 'You are wrong.';
+    quizStatus.textContent = 'Previous answer was wrong.';
     countLosses();
   }
 
   //  if answer is right, tell them they are right
   else {
     console.log('right')
-    quizStatus.textContent = 'You are right.';
+    quizStatus.textContent = 'Previous answer was right.';
     countWins();
 
   }
@@ -169,17 +187,29 @@ function choiceClick() {
   if (questionIndex === questionArr.length) {
 
     console.log('end quiz');
+
+    // records wins and writes them to var- and to local storage
     console.log(winsStart);
     wins.textContent = winsStart;
     localStorage.setItem("wins", winsStart);
+
+    // records losses and writes them to var and to local storage
     console.log(lossesStart);
     losses.textContent = lossesStart;
     localStorage.setItem("losses", lossesStart)
+
+    // hides timer
     timeEl.setAttribute('class', 'hide');
+    // shows gam is over text in place of timer
     timerLabel.textContent = 'Game Over';
+
+    // hides quiz quesionts
     quizScreen.setAttribute('class', 'hide');
     quizStatus.setAttribute('class', 'hide');
-    viewHighscores.setAttribute('class', 'show')
+
+    // shows scores
+    viewHighscores.setAttribute('class', 'show');
+    showScores.setAttribute('class', 'show');
 
     return
 
@@ -198,18 +228,23 @@ startBtn.addEventListener("click", setTime);
 // Logging initials to local storage NOT WORKING
 
 //  Form submission code for adding intials and saving to local storage
-var initialsBtn = document.getElementById('initialsBtn');
-var initials
-var initialsInput = document.getElementById('initials-text');
+
+
+
 
 
 // Path 1 for logging initials (NOT WORKING)
 
 function localInitialsalt(event) {
+  var initialsBtn = document.getElementById('initialsBtn');
+  var initials = ''
+  var initialsInput = document.getElementById('initials-text');
   event.preventDefault();
   initials.textContent = initialsInput;
   console.log(initialsInput);
-  localStorage.setItem("initials", initials)
+  localStorage.setItem("initials", initials);
+
+  return
 }
 
 
@@ -244,8 +279,9 @@ function localInitialsalt(event) {
 
 initialsBtn.addEventListener("submit", localInitialsalt);
 
-//TO DO : store final value of wins and losses in variable after game is played and store that to local storage and then access it to display in the view highlights section
+//TO DO : store final value of wins and losses in variable after game is played and store that to local storage and then access it to display in the view highlights in the div id status section (could not get initials to store so couldn't complete div id status and what I planned to do there.
+
+// For div = status, that section would show at the end of the game and would pull the wins and losses from localstorage and display it in this section with initial, but couldn't get initials into local storage so couldn't key the values in local storage to anything
 
 
 
-// All done! Your final score is, enter intials submit, display high scores

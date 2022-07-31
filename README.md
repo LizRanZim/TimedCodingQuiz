@@ -8,7 +8,7 @@ The application is a quiz on javascript fundamentals that is timed.
 
 The following .png shows the application's appearance and functionality on a desktop.
 
-<img src="./Assets/FILENAMEHERE.png">
+<img src="./images/QuizCodingGame.png">
 
 ## Link to deployed application
 
