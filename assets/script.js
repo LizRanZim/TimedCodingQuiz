@@ -29,11 +29,15 @@ var startBtn = document.getElementById("startBtn");
 var quizScreen = document.getElementById("quizScreen");
 var choiceEl = document.getElementById('choices');
 var quizStatus = document.getElementById('status');
+var localStoragescores = document.getElementById ('localStoragescores');
 var viewHighscores = document.getElementById('viewScore');
 var showScores = document.getElementById('scoreResults')
 var timerLabel = document.getElementById('timerLabel');
 var wins = document.getElementById('correctQuestions');
 var losses = document.getElementById('incorrectQuestions');
+var showInitials = document.getElementById("showInitials");
+var showWins = document.getElementById("showWins");
+var showLosses = document.getElementById("showLosses");
 
 
 
@@ -210,6 +214,7 @@ function choiceClick() {
     // shows scores
     viewHighscores.setAttribute('class', 'show');
     showScores.setAttribute('class', 'show');
+    
 
     return
 
@@ -237,6 +242,7 @@ startBtn.addEventListener("click", setTime);
 
 function localInitialsalt(event) {
   event.preventDefault();
+  var showInitials = document.getElementById("showInitials");
   var initialsBtn = document.getElementById('initialsBtn');
   var initials = ''
   var initialsInput = document.getElementById('initials-text');
@@ -245,47 +251,53 @@ function localInitialsalt(event) {
   console.log(initials);
 
   localStorage.setItem("initials", JSON.stringify(initials));
-
+    
+  showLocalScores();
   
-
-
-  return
 }
 
 initialsBtn.addEventListener("click", localInitialsalt);
 
-// Function to log initials, I don't know this syntax but copied it from here and tried to adjust it: https://stackoverflow.com/questions/69962673/how-do-i-save-and-show-text-input-to-local-storage-using-a-button
-
-// Path 2 for logging initials
-// function logInitials() {
-//   addLocalInitials();
-//   showLocalInitials();
-// }
-
-
-// function addLocalInitials() {
-
-//   const display = {};
-//   display.initialsInput = document.getElementById('initials-text').value;
-
-
-//   window.localStorage.setItem('display', JSON.stringify(display));
-// }
-
-// function showLocalInitials() {
-
-//   let _display = JSON.parse(localStorage.getItem("display"));
-//   document.getElementById('initials-text').value = _display.initials-text;
-
-//   document.getElementById('display').value = Object.values(_display);
-
-// }
 
 
 
 
 
-//TO DO : store final value of wins and losses in variable after game is played and store that to local storage and then access it to display in the view highlights in the div id status section (could not get initials to store so couldn't complete div id status and what I planned to do there.
+
+// When I put the show scores in a function it doesn't work, but when I turn on the function and then turn off the function, the scores display. Get help on this.
+
+
+function showLocalScores() {
+
+localStoragescores.setAttribute('class', 'show');
+
+var getInitials = localStorage.getItem("initials");
+
+var getWins = localStorage.getItem("wins");
+
+var getLosses = localStorage.getItem("losses");
+
+showInitials.textContent = getInitials;
+showWins.textContent = getWins;
+showLosses.textContent = getLosses;
+
+return
+}
+
+
+
+
+ 
+
+// // var counter = document.querySelector("#counter");
+// var addButton = document.querySelector("#add");
+// var subtractButton = document.querySelector("#subtract");
+
+// var count = localStorage.getItem("count");
+
+// counter.textContent = count;
+
+
 
 // For div = status, that section would show at the end of the game and would pull the wins and losses from localstorage and display it in this section with initial, but couldn't get initials into local storage so couldn't key the values in local storage to anything
 

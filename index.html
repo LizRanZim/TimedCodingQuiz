@@ -18,42 +18,49 @@
             <button id="startBtn" class="btn btn-primary btn-lg">Start</button>
         </div>
 
-       <h2><div id="timerLabel">Time: <span id="time">0</h2></span>
-        </div>
-
-        <div id="viewScore">
-            
-
-            <div id="scoreResults" class="hide">
-                <h2>Your Score</h2>
-                <h4>Correct Answers: <span id="correctQuestions">0</span></h4>
-                <h4> Incorrect Answers: <span id="incorrectQuestions">0</span></h4>
-                <p>Enter your initials to save your score and press submit. The game will restart!</p>
-                <form id="initials-form">
-                    <label for="initials-form">Add Your Intials </label>
-                    <input type="text" placeholder="AA" name="initials-text" id="initials-text" /><button id="initialsBtn" class ="btn btn-primary">Submit</button>
-                  </form>
-
-     
-
-            </div>
-
-        </div>
-
-        <div id="quizScreen" class="hide">
-            <div>
-                <div id="question"></div>
-                <div id="choices"></div>
-            </div>
-
-        </div>
-
-        
+        <h2>
+            <div id="timerLabel">Time: <span id="time">0
+        </h2></span>
     </div>
 
-    <div id="status">
-        <div id="localStoragescores"></div>
+    <div id="viewScore">
+
+
+        <div id="scoreResults" class="hide">
+            <h2>Your Score</h2>
+            <h4>Correct Answers: <span id="correctQuestions">0</span></h4>
+            <h4> Incorrect Answers: <span id="incorrectQuestions">0</span></h4>
+            <p>Enter your initials to save your score and press submit. Refresh the browser to play again.</p>
+            <form id="initials-form">
+                <label for="initials-form">Add Your Intials </label>
+                <input type="text" placeholder="AA" name="initials-text" id="initials-text" /><button id="initialsBtn"
+                    class="btn btn-primary">Submit</button>
+            </form>
+
+
+
+        </div>
+
     </div>
+
+    <div id="quizScreen" class="hide">
+        <div>
+            <div id="question"></div>
+            <div id="choices"></div>
+        </div>
+
+    </div>
+
+
+    </div>
+
+    <div id="status"></div>
+    <div id="localStoragescores">
+      Initials:<div id=showInitials></div>
+       Correct Answers:<div id=showWins></div>
+      Incorrect Answers:<div id=showLosses></div>
+    </div>
+
 
     <script src="./assets/script.js"></script>
 </body>

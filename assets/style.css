@@ -54,3 +54,15 @@ h2 {
     font-size: 20px;
 
 }
+
+#localStoragescores {
+    margin: 15px;
+    text-align: center;
+    font-weight: bolder;
+    color: cadetblue;
+    border: solid 2px rgba(74, 14, 14, 0.504);
+    border-radius: 5px;
+    background-color: bisque;
+    font-size: 20px;
+ 
+}
