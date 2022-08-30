@@ -242,7 +242,7 @@ startBtn.addEventListener("click", setTime);
 
 function localInitialsalt(event) {
   event.preventDefault();
-  var showInitials = document.getElementById("showInitials");
+
   var initialsBtn = document.getElementById('initialsBtn');
   var initials = ''
   var initialsInput = document.getElementById('initials-text');
